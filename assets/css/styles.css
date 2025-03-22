@@ -1,0 +1,423 @@
+:root::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* ============================== 
+Global Styles 
+============================== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffe6eb;
+  color: #5c3a42;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffb6c1;
+  padding: 2vw;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 3.5em;
+  margin: 0;
+}
+
+/* ============================== 
+Layout Grid 
+============================== */
+#container {
+  display: grid;
+  grid-template-columns: 2.5fr 7.5fr;
+  gap: 4vw;
+  padding: 3vw;
+  justify-items: center;
+}
+
+/* ============================== 
+Form Styles (Add Book & Search Book) 
+============================== */
+#addBook,
+#searchBookSection {
+  background-color: #ffdde4;
+  padding: 1vw;
+  border-radius: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 30%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#addBook h2 {
+  font-size: 1.5em;
+  margin-bottom: 1.5vw;
+  color: #5c3a42;
+}
+
+#addBookButton {
+  padding: 1.2vw;
+  background-color: #ff99a9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 80%;
+  font-size: 1.1em;
+}
+
+#addBookButton:hover {
+  background-color: #ff8c94;
+}
+
+#searchBook {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+form > label {
+  font-size: 1.7em;
+  margin-right: 2%;
+}
+
+#searchBook input {
+  padding: 1.2vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 2vw;
+  width: 70%;
+  font-size: 1.1em;
+}
+
+#searchBook button {
+  padding: 1.2vw;
+  background-color: #ff99a9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 25%;
+  font-size: 1.1em;
+}
+
+#searchBook button:hover {
+  background-color: #ff8c94;
+}
+
+/* ============================== 
+Overlay for Modal Form 
+============================== */
+body.blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  display: none;
+  z-index: 999;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ============================== 
+Modal Form Section 
+============================== */
+#bookFormSection {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3vw;
+  border-radius: 1vw;
+  z-index: 1000;
+  width: 40%;
+  background-color: #fdb1c2;
+  color: white;
+  font-size: 1.3em;
+}
+
+#bookFormSection h2 {
+  color: white;
+  font-size: 2em;
+  margin-bottom: 1vw;
+}
+
+/* ============================== 
+Input and Submit Button in Modal 
+============================== */
+#bookFormSection input {
+  padding: 1.5vw;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  font-size: 1.3em;
+}
+
+#bookFormIsCompleteWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2% 0 2% 0;
+}
+
+#bookFormIsCompleteWrapper label {
+  font-size: 1.2em;
+  width: 30%;
+  display: inline-block;
+}
+
+#bookFormIsCompleteWrapper input {
+  margin-left: auto;
+  transform: scale(2.3);
+  width: 7%;
+}
+
+#bookFormSubmit {
+  background-color: #ff99a9;
+  color: white;
+  padding: 2vw;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.3em;
+  width: 80%;
+  margin-left: 10%;
+}
+
+#bookFormSubmit:hover {
+  background-color: #ff8c94;
+}
+
+/* ============================== 
+Responsiveness 
+============================== */
+@media (max-width: 768px) {
+  #bookFormSection {
+    width: 70%;
+    padding: 5vw;
+  }
+
+  #bookFormSection h2 {
+    font-size: 1.7em;
+  }
+
+  #bookFormSubmit {
+    width: 90%;
+    margin-left: 0;
+    font-size: 1.2em;
+  }
+
+  #bookFormSection input {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  #bookFormSection {
+    width: 90%;
+    padding: 6vw;
+  }
+
+  #bookFormSection h2 {
+    font-size: 1.5em;
+  }
+
+  #bookFormSubmit {
+    width: 100%;
+    font-size: 1.3em;
+  }
+
+  #bookFormSection input {
+    font-size: 1.2em;
+  }
+}
+
+/* ============================== 
+Section Styles (For Displaying Books) 
+============================== */
+main > section {
+  margin: 2vw 0;
+  padding: 2vw;
+  background-color: #ffdde4;
+  border-radius: 1vw;
+}
+
+section h2 {
+  font-size: 1.5em;
+  margin-bottom: 1.5vw;
+  text-align: center;
+  color: #5c3a42;
+}
+
+/* ============================== 
+Book Lists (Incomplete & Complete) 
+============================== */
+#incompleteBookList,
+#completeBookList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2vw;
+  padding: 2vw;
+  min-height: calc(9vw * 5 / 4 + 4vh);
+}
+
+/* ============================== 
+Individual Book Item Styles 
+============================== */
+[data-testid="bookItem"] {
+  background-color: #fff5f8;
+  padding: 2vh;
+  border-radius: 1vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+[data-testid="bookItem"] #bookImage {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: #d8a7b1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  margin-bottom: 1vh;
+}
+
+[data-testid="bookItemTitle"],
+[data-testid="bookItemAuthor"],
+[data-testid="bookItemYear"] {
+  font-size: 0.9em;
+  color: #5c3a42;
+  text-align: center;
+  margin: 5px 0;
+}
+
+/* ============================== 
+Buttons in Book Item (Complete, Delete, Edit) 
+============================== */
+[data-testid="bookItemIsCompleteButton"],
+[data-testid="bookItemDeleteButton"],
+[data-testid="bookItemEditButton"] {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  background-color: #ff99a9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+}
+
+[data-testid="bookItemIsCompleteButton"]:hover,
+[data-testid="bookItemDeleteButton"]:hover,
+[data-testid="bookItemEditButton"]:hover {
+  background-color: #ff8c94;
+}
+
+/* ============================== 
+Empty Book Item (Placeholder) 
+============================== */
+[data-testid="bookItem"]:empty {
+  background-color: #ffe0e6;
+  height: 200px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-testid="bookItem"]:empty::before {
+  content: "Buku Placeholder";
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+}
+
+/* ============================== 
+Media Queries for Responsiveness 
+============================== */
+@media (max-width: 1000px) {
+  #container {
+    grid-template-columns: 2.5fr 7.5fr;
+  }
+
+  #incompleteBookList,
+  #completeBookList {
+    grid-template-columns: repeat(3, 1fr);
+    min-height: calc(20vw * 5 / 4 + 4vh);
+  }
+}
+
+@media (max-width: 768px) {
+  #container {
+    grid-template-columns: 1fr;
+  }
+
+  #addBook,
+  #searchBookSection {
+    width: 100%;
+  }
+
+  #incompleteBookList,
+  #completeBookList {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: calc(30vw * 5 / 4 + 4vh);
+  }
+  
+  #bookFormIsCompleteWrapper input {
+    margin-left: auto;
+    transform: scale(2);
+    width: 15%;
+  }
+}
+
+/* ============================== 
+Footer
+============================== */
+#footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffb6c1;
+  font-size: 16px;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
